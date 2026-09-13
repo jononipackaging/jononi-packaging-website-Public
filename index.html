@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jononi Packaging — Shopping Bags, Non-Woven Bags & LDPE Poly Bags</title>
+<meta name="description" content="Jononi Packaging manufactures shopping bags, non-woven bags and LDPE poly bags for retail and industrial clients across Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6FAFD;
+    --bg-panel:#EAF3FB;
+    --card:#FFFFFF;
+    --ink:#132538;
+    --muted:#5B6B7C;
+    --line:rgba(19,37,56,0.10);
+    --deep:#123B6B;
+    --mid:#2E7BC4;
+    --bright:#4FA3E3;
+    --radius:12px;
+    --radius-sm:8px;
+    --shadow:0 1px 3px rgba(20,50,90,0.08);
+    --shadow-hover:0 16px 30px rgba(20,50,90,0.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{font-family:'Space Grotesk',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--mid);color:#fff;}
+
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--mid);color:#fff;padding:10px 16px;z-index:200;border-radius:0 0 6px 0;}
+  .skip-link:focus{left:0;top:0;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline:2px solid var(--mid);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(246,250,253,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 0;
+  }
+  .brand img{height:46px;width:auto;display:block;}
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{font-size:15px;color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    background:var(--mid);color:#fff !important;padding:10px 20px;border-radius:var(--radius-sm);
+    font-size:14px;font-weight:600;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--bright);}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{width:24px;height:2px;background:var(--ink);display:block;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:88px 0 76px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;
+  }
+  .eyebrow-line{width:44px;height:3px;background:var(--mid);margin-bottom:22px;border-radius:2px;}
+  .hero h1{
+    font-size:clamp(34px,5vw,52px);
+    font-weight:700;line-height:1.14;letter-spacing:-0.5px;
+    color:var(--deep);
+  }
+  .hero h1 em{font-style:normal;color:var(--mid);}
+  .hero p.lead{margin-top:22px;color:var(--muted);font-size:17px;max-width:480px;}
+  .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--mid);color:#fff;padding:14px 26px;border-radius:var(--radius-sm);
+    font-weight:600;font-size:15px;border:none;cursor:pointer;
+  }
+  .btn-primary:hover{background:var(--bright);}
+  .btn-ghost{
+    padding:14px 26px;border-radius:var(--radius-sm);font-weight:600;font-size:15px;
+    border:1px solid var(--line);color:var(--deep);background:#fff;
+  }
+  .btn-ghost:hover{border-color:var(--bright);color:var(--bright);}
+
+  .hero-art{position:relative;height:420px;}
+  .hero-art svg{width:100%;height:100%;}
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero-grid > div{animation:riseIn .7s ease both;}
+  .hero-grid > div:nth-child(2){animation-delay:.12s;}
+
+  /* ---------- Stats strip ---------- */
+  .stats{border-bottom:1px solid var(--line);background:var(--bg-panel);}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);padding:36px 0;}
+  .stat{text-align:left;padding:0 20px;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;padding-left:0;}
+  .stat .num{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:var(--mid);}
+  .stat .lbl{color:var(--muted);font-size:13.5px;margin-top:4px;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:600px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);font-weight:600;letter-spacing:-0.3px;color:var(--deep);}
+  .section-head p{color:var(--muted);margin-top:14px;font-size:16px;}
+
+  /* ---------- Products ---------- */
+  .products{border-top:1px solid var(--line);}
+  .product-list{display:flex;flex-direction:column;}
+  .product-row{
+    display:grid;grid-template-columns:0.7fr 1.3fr;gap:48px;
+    padding:44px 0;border-top:1px solid var(--line);align-items:center;
+  }
+  .product-row:first-child{border-top:none;}
+  .product-icon{width:96px;height:96px;flex-shrink:0;}
+  .product-row h3{font-size:22px;font-weight:600;}
+  .product-row .tag{color:var(--mid);font-size:13px;font-weight:600;letter-spacing:0.3px;margin-bottom:8px;display:block;}
+  .product-row p{color:var(--muted);margin-top:10px;max-width:560px;}
+  .spec-list{display:flex;gap:28px;margin-top:18px;flex-wrap:wrap;}
+  .spec-list div{font-size:13.5px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;}
+  .spec-list strong{display:block;color:var(--ink);font-size:14.5px;}
+
+  /* ---------- Gallery ---------- */
+  .gallery{background:var(--bg-panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .gallery-card{
+    background:var(--card);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:transform .45s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, opacity .45s ease;
+  }
+  .gallery-card.pre-reveal{opacity:0;transform:translateY(26px);}
+  .gallery-card.pre-reveal.in-view{opacity:1;transform:translateY(0);}
+  .gallery-card:nth-child(1){transition-delay:0s;}
+  .gallery-card:nth-child(2){transition-delay:.08s;}
+  .gallery-card:nth-child(3){transition-delay:.16s;}
+  .gallery-card:nth-child(4){transition-delay:.24s;}
+  .gallery-card:nth-child(5){transition-delay:.32s;}
+  .gallery-card:nth-child(6){transition-delay:.4s;}
+  .gallery-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);transition-delay:0s;}
+  .gallery-card img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+  .gc-label{padding:14px 16px;font-size:14.5px;font-weight:600;color:var(--ink);border-top:1px solid var(--line);}
+
+  /* ---------- Why us ---------- */
+  .why-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card);}
+  .why-item{padding:32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-item:nth-child(2n){border-right:none;}
+  .why-item h3{font-size:17px;font-weight:600;margin-bottom:8px;color:var(--deep);}
+  .why-item p{color:var(--muted);font-size:14.5px;}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--bg-panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:0;}
+  .p-step{padding:28px 18px 0;border-top:2px solid var(--deep);position:relative;}
+  .p-step .p-num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--mid);}
+  .p-step h4{font-size:14.5px;margin-top:10px;font-weight:600;color:var(--ink);}
+  .p-step p{font-size:13px;color:var(--muted);margin-top:6px;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-art{height:320px;}
+  .about-art svg{width:100%;height:100%;}
+  .about-text p{color:var(--muted);margin-top:16px;}
+  .about-text p:first-of-type{margin-top:0;}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--bg-panel);border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;}
+  .contact-info h3{font-size:20px;font-weight:600;margin-bottom:18px;color:var(--deep);}
+  .contact-info .row{display:flex;gap:14px;margin-bottom:18px;color:var(--muted);font-size:15px;}
+  .contact-info .row strong{color:var(--ink);display:block;font-size:14px;}
+  .contact-info .row a{color:var(--mid);}
+  .contact-info .row a:hover{text-decoration:underline;}
+  form{display:flex;flex-direction:column;gap:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  label{font-size:13px;color:var(--muted);margin-bottom:6px;display:block;}
+  input,textarea,select{
+    width:100%;background:var(--card);border:1px solid var(--line);
+    color:var(--ink);padding:12px 14px;border-radius:var(--radius-sm);font-family:inherit;font-size:14.5px;
+  }
+  textarea{resize:vertical;min-height:110px;}
+  input:focus,textarea:focus,select:focus{border-color:var(--bright);}
+  .map-embed{margin-top:26px;border:1px solid var(--line);border-radius:var(--radius);height:200px;overflow:hidden;}
+  .map-embed iframe{width:100%;height:100%;border:0;filter:grayscale(0.15);}
+
+  /* ---------- Footer ---------- */
+  footer{padding:36px 0;border-top:1px solid var(--line);}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-row .brand img{height:30px;}
+  .foot-links{display:flex;gap:24px;}
+  .foot-links a{color:var(--muted);font-size:14px;}
+  .foot-links a:hover{color:var(--ink);}
+  .foot-note{color:var(--muted);font-size:13px;margin-top:22px;}
+
+  /* ---------- WhatsApp float ---------- */
+  .wa-float{
+    position:fixed;right:24px;bottom:24px;z-index:150;
+    width:56px;height:56px;border-radius:50%;
+    background:#1E8E5A;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(20,40,70,0.3);
+  }
+  .wa-float svg{width:28px;height:28px;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{height:260px;order:-1;}
+    .stats-row{grid-template-columns:repeat(2,1fr);row-gap:24px;}
+    .stat:nth-child(3){border-left:none;}
+    .product-row{grid-template-columns:1fr;}
+    .product-icon{width:70px;height:70px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .why-list{grid-template-columns:1fr;}
+    .why-item{border-right:none;}
+    .process-steps{grid-template-columns:repeat(2,1fr);}
+    .p-step{border-top:2px solid var(--deep);padding-bottom:18px;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-art{order:-1;height:220px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .gallery-grid{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .hero-grid > div{animation:none;}
+    .gallery-card{transition:opacity .3s ease;}
+    .gallery-card.pre-reveal{transform:none;}
+    .gallery-card:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand"><img src="images/logo.jpg" alt="Jononi Packaging — Smart Solution For Smart Packaging"></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Request a Quote</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line"></div>
+        <h1>Packaging that holds up <em>from the roll to the shelf.</em></h1>
+        <p class="lead">Jononi Packaging manufactures shopping bags, non-woven bags and LDPE poly bags for retailers, exporters and industrial buyers across Bangladesh — built to order, checked before it leaves the floor.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Request a Quote</a>
+          <a href="#products" class="btn-ghost">See What We Make</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="120" cy="300" rx="70" ry="70" stroke="#2E7BC4" stroke-width="2"/>
+          <ellipse cx="120" cy="300" rx="26" ry="26" stroke="#123B6B" stroke-width="2"/>
+          <line x1="120" y1="230" x2="120" y2="370" stroke="#123B6B" stroke-width="2" stroke-dasharray="4 6"/>
+          <path d="M190 300 C 260 270, 320 250, 388 236" stroke="#2E7BC4" stroke-width="2"/>
+          <path d="M210 120 L210 100 C210 78 226 62 248 62 C270 62 286 78 286 100 L286 120" stroke="#123B6B" stroke-width="2"/>
+          <rect x="190" y="120" width="116" height="140" rx="2" stroke="#132538" stroke-width="2"/>
+          <line x1="190" y1="150" x2="306" y2="150" stroke="#2E7BC4" stroke-width="1.5"/>
+          <path d="M60 150 L150 150 L162 260 L48 260 Z" stroke="#2E7BC4" stroke-width="2"/>
+          <line x1="80" y1="150" x2="80" y2="130" stroke="#123B6B" stroke-width="2"/>
+          <line x1="130" y1="150" x2="130" y2="130" stroke="#123B6B" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap stats-row">
+      <div class="stat"><div class="num">3</div><div class="lbl">product lines in-house</div></div>
+      <div class="stat"><div class="num">B2B</div><div class="lbl">& bulk order focused</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">custom sizing & printing</div></div>
+      <div class="stat"><div class="num">QC</div><div class="lbl">checked before dispatch</div></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we manufacture</h2>
+        <p>Three product lines, each made to the size, weight and print your business actually needs — not a fixed catalogue.</p>
+      </div>
+      <div class="product-list">
+
+        <div class="product-row">
+          <svg class="product-icon" viewBox="0 0 100 100" fill="none">
+            <path d="M28 30 L28 22 C28 12 36 4 46 4 L54 4 C64 4 72 12 72 22 L72 30" stroke="#123B6B" stroke-width="2.5"/>
+            <rect x="18" y="30" width="64" height="64" rx="2" stroke="#132538" stroke-width="2.5"/>
+            <line x1="18" y1="46" x2="82" y2="46" stroke="#2E7BC4" stroke-width="2"/>
+          </svg>
+          <div>
+            <span class="tag">Shopping Bags</span>
+            <h3>Retail carry bags, made to your branding</h3>
+            <p>Handle-style carry bags for shops, boutiques and supermarkets — sized and printed to match your store's identity, with reinforced handles for daily retail use.</p>
+            <div class="spec-list">
+              <div><strong>Sizes</strong>Custom, per order</div>
+              <div><strong>Printing</strong>1–4 colour flexographic</div>
+              <div><strong>MOQ</strong>Ask for bulk pricing</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-row">
+          <svg class="product-icon" viewBox="0 0 100 100" fill="none">
+            <path d="M20 30 L80 30 L88 92 L12 92 Z" stroke="#123B6B" stroke-width="2.5"/>
+            <line x1="34" y1="30" x2="34" y2="14" stroke="#2E7BC4" stroke-width="2.5"/>
+            <line x1="66" y1="30" x2="66" y2="14" stroke="#2E7BC4" stroke-width="2.5"/>
+            <line x1="20" y1="52" x2="80" y2="52" stroke="#132538" stroke-width="1.5" stroke-dasharray="2 5"/>
+          </svg>
+          <div>
+            <span class="tag">Non-Woven Bags</span>
+            <h3>Reusable fabric bags for retail & promotion</h3>
+            <p>Durable non-woven polypropylene bags for grocery, promotional giveaways and export packing — a reusable alternative that holds printed branding well.</p>
+            <div class="spec-list">
+              <div><strong>Material</strong>Non-woven PP fabric</div>
+              <div><strong>GSM</strong>Per order requirement</div>
+              <div><strong>Finish</strong>Loop handle or D-cut</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-row">
+          <svg class="product-icon" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="34" stroke="#123B6B" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="12" stroke="#2E7BC4" stroke-width="2.5"/>
+            <line x1="50" y1="16" x2="50" y2="4" stroke="#132538" stroke-width="2"/>
+            <path d="M50 4 C 70 4, 90 20, 92 42" stroke="#2E7BC4" stroke-width="2"/>
+          </svg>
+          <div>
+            <span class="tag">LDPE Poly Bags</span>
+            <h3>Flat & garment poly bags, rolled or sheeted</h3>
+            <p>Low-density polyethylene bags and sheeting for garments, food-grade wrapping and industrial packing, supplied as rolls, sheets or pre-cut bags.</p>
+            <div class="spec-list">
+              <div><strong>Thickness</strong>Per micron requirement</div>
+              <div><strong>Form</strong>Roll, sheet or cut bag</div>
+              <div><strong>Clarity</strong>Clear or tinted film</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>A look at our work</h2>
+        <p>A few bags we've produced for clients — printed, sized and finished to their brand.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="images/bag-ldpe-handle-folding.jpg" alt="LDPE poly handle folding bag, yellow, custom printed">
+          <div class="gc-label">LDPE Poly Handle Folding Bag</div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/bag-nonwoven-dcut.jpg" alt="Non-woven D-cut bag, white, custom printed">
+          <div class="gc-label">Non-Woven D-Cut Bag</div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/bag-nonwoven-swing-food.jpg" alt="Non-woven swing food bag, red, custom printed">
+          <div class="gc-label">Non-Woven Swing Food Bag</div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/bag-ldpe-dcut-folding.jpg" alt="LDPE poly D-cut folding bag, grey, custom printed">
+          <div class="gc-label">LDPE Poly D-Cut Folding Bag</div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/bag-nonwoven-swing-box.jpg" alt="Non-woven swing box bag, red and yellow, custom printed">
+          <div class="gc-label">Non-Woven Swing Box Bag</div>
+        </div>
+        <div class="gallery-card">
+          <img src="images/bag-nonwoven-loop-handle.jpg" alt="Non-woven loop handle bag, white and purple, custom printed">
+          <div class="gc-label">Non-Woven Loop Handle Bag</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Why buyers stay with Jononi</h2>
+        <p>Packaging is a repeat purchase. These are the things that make people reorder.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item">
+          <h3>Made to your spec, not a catalogue</h3>
+          <p>Size, thickness, GSM and print are set per order — we don't push you toward a fixed stock size.</p>
+        </div>
+        <div class="why-item">
+          <h3>Consistent batch quality</h3>
+          <p>Every batch is checked for thickness, seal strength and print alignment before it's packed for dispatch.</p>
+        </div>
+        <div class="why-item">
+          <h3>Built for bulk & repeat orders</h3>
+          <p>Our production is set up for recurring B2B volumes, with the same spec held consistent order after order.</p>
+        </div>
+        <div class="why-item">
+          <h3>Direct communication</h3>
+          <p>You talk to the people running production — not a layer of account managers between you and the factory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How an order moves through the floor</h2>
+        <p>The same six stages, every order.</p>
+      </div>
+      <div class="process-steps">
+        <div class="p-step"><div class="p-num">01</div><h4>Raw material</h4><p>Resin, film or fabric sourced to spec.</p></div>
+        <div class="p-step"><div class="p-num">02</div><h4>Extrusion / weaving</h4><p>Film or fabric formed to thickness.</p></div>
+        <div class="p-step"><div class="p-num">03</div><h4>Printing</h4><p>Flexographic printing to your artwork.</p></div>
+        <div class="p-step"><div class="p-num">04</div><h4>Cutting & sealing</h4><p>Cut, sealed and formed to size.</p></div>
+        <div class="p-step"><div class="p-num">05</div><h4>Quality check</h4><p>Thickness, seal and print verified.</p></div>
+        <div class="p-step"><div class="p-num">06</div><h4>Pack & dispatch</h4><p>Bundled, boxed and sent out.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <div class="eyebrow-line"></div>
+        <h2>About Jononi Packaging</h2>
+        <p>Jononi Packaging is a Bangladesh-based manufacturer of shopping bags, non-woven bags and LDPE poly bags, supplying retailers, exporters and industrial buyers who need packaging made to a specific size, weight or print — not picked off a shelf.</p>
+        <p>[Add your company's founding story, facility details and capacity figures here.]</p>
+        <p>[Add certifications, major clients or export markets here, if applicable.]</p>
+      </div>
+      <div class="about-art" aria-hidden="true">
+        <svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="40" width="360" height="240" stroke="#123B6B" stroke-width="2"/>
+          <line x1="20" y1="100" x2="380" y2="100" stroke="#2E7BC4" stroke-width="1.5"/>
+          <rect x="60" y="130" width="80" height="60" stroke="#123B6B" stroke-width="2"/>
+          <rect x="160" y="150" width="80" height="40" stroke="#123B6B" stroke-width="2"/>
+          <rect x="260" y="120" width="80" height="70" stroke="#123B6B" stroke-width="2"/>
+          <line x1="20" y1="240" x2="380" y2="240" stroke="#2E7BC4" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h3>Talk to us about an order</h3>
+        <div class="row">
+          <div><strong>Phone / WhatsApp</strong><a href="tel:+8801830593672">+880 1830-593672</a></div>
+        </div>
+        <div class="row">
+          <div><strong>Email</strong><a href="mailto:jononipackaging@gmail.com">jononipackaging@gmail.com</a></div>
+        </div>
+        <div class="row">
+          <div><strong>Address</strong>Hwk Place, Madani City Rd, Kalibandor 3100, Bangladesh</div>
+        </div>
+        <div class="row">
+          <div><strong>Hours</strong>Sat–Thu, 9:00 AM – 6:00 PM</div>
+        </div>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps?q=Jononi+Packaging,+Hwk+place,+Madani+City+Rd,+calibondor+3100&output=embed" loading="lazy" title="Jononi Packaging location"></iframe>
+        </div>
+      </div>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <div>
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        <div>
+          <label for="product">Product of interest</label>
+          <select id="product" name="product">
+            <option>Shopping Bags</option>
+            <option>Non-Woven Bags</option>
+            <option>LDPE Poly Bags</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Order details</label>
+          <textarea id="message" name="message" placeholder="Quantity, size, thickness/GSM, printing needs..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <a href="#top" class="brand"><img src="images/logo.jpg" alt="Jononi Packaging"></a>
+      <div class="foot-links">
+        <a href="#products">Products</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="foot-note">© <span id="year"></span> Jononi Packaging. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/8801830593672" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.42a9.87 9.87 0 0 0 4.62 1.18h.01c5.46 0 9.9-4.45 9.9-9.91S17.5 2 12.04 2Zm5.79 14.07c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.81-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.64.49.24.56.81 1.94.88 2.08.07.14.11.31.02.5-.09.18-.13.29-.26.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.15.27.68 1.12 1.46 1.82 1 .89 1.85 1.17 2.11 1.3.26.13.42.11.57-.07.16-.18.66-.77.84-1.03.18-.27.35-.22.6-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.65-.17 1.33Z"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open-mobile');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open){
+      navLinks.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#ffffff;padding:20px 28px;gap:18px;border-bottom:1px solid rgba(19,37,56,0.10);';
+    } else {
+      navLinks.removeAttribute('style');
+    }
+  });
+
+  // Google-card-style reveal animation for the gallery
+  const galleryCards = document.querySelectorAll('.gallery-card');
+  if('IntersectionObserver' in window){
+    galleryCards.forEach(c => c.classList.add('pre-reveal'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    galleryCards.forEach(c => io.observe(c));
+  }
+</script>
+
+</body>
+</html>
