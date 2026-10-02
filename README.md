@@ -43,8 +43,8 @@ Keep `index.html` and the `images` folder together — the page loads images usi
 ## What's still a placeholder — update before going live
 
 In the **About** section of `index.html`, replace these two lines with your real content:
-- `[Add your company's founding story, facility details and capacity figures here.]`
-- `[Add certifications, major clients or export markets here, if applicable.]`
+- `[Company's founding story, facility details and capacity figures.]`
+- `[Certifications, major clients if applicable.]`
 
 ## The contact form
 
